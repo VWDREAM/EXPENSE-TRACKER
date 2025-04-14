@@ -1,3 +1,4 @@
+// ExpenseForm.jsx
 import React, { useState } from 'react';
 
 function ExpenseForm({ onAddExpense }) {
@@ -25,36 +26,39 @@ function ExpenseForm({ onAddExpense }) {
   };
 
   return (
-    <div>
-      <h2>Add New Expense</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="bg-white shadow-md rounded-md p-6">
+      <h2 className="text-xl font-semibold mb-4 text-gray-800">Add New Expense</h2>
+      <form onSubmit={handleSubmit} className="mt-4 space-y-4">
         <div>
-          <label htmlFor="description">Description:</label>
+          <label htmlFor="description" className="block text-gray-700 text-sm font-bold mb-2">Description:</label>
           <input
             type="text"
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-gray-300 focus:border-blue-500"
           />
         </div>
         <div>
-          <label htmlFor="amount">Amount:</label>
+          <label htmlFor="amount" className="block text-gray-700 text-sm font-bold mb-2">Amount:</label>
           <input
             type="number"
             id="amount"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             required
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-gray-300 focus:border-blue-500"
           />
         </div>
         <div>
-          <label htmlFor="category">Category:</label>
+          <label htmlFor="category" className="block text-gray-700 text-sm font-bold mb-2">Category:</label>
           <select
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             required
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-gray-300 focus:border-blue-500"
           >
             <option value="Food">Food</option>
             <option value="Entertainment">Entertainment</option>
@@ -63,7 +67,12 @@ function ExpenseForm({ onAddExpense }) {
             <option value="Other">Other</option>
           </select>
         </div>
-        <button type="submit">Add Expense</button>
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Add Expense
+        </button>
       </form>
     </div>
   );

@@ -58,18 +58,20 @@ function App() {
   }, [expenses, searchTerm, sortBy, sortOrder]);
 
   return (
-    <div>
-      <h1>Expense Tracker</h1>
-      <SearchBar onSearch={handleSearch} />
-      <ExpenseForm onAddExpense={addExpense} />
-
-      <div>
-        {/* Sorting Buttons */}
-        <button onClick={() => handleSort('description')}>Sort by Description</button>
-        <button onClick={() => handleSort('category')}>Sort by Category</button>
+    <div className="p-4 md:p-6 lg:p-8 bg-gray-50 min-h-screen flex flex-col items-center">
+      <h1 className="text-3xl font-bold text-gray-800 mb-6">Expense Tracker</h1>
+      <div className="w-full max-w-md space-y-4 mb-8">
+        <SearchBar onSearch={handleSearch} />
+        <ExpenseForm onAddExpense={addExpense} />
       </div>
 
-      <ExpenseTable expenses={filteredAndSortedExpenses} />
+      <div className="flex space-x-2 mb-4">
+        {/* Sorting Buttons */}
+        <button onClick={() => handleSort('description')} className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sort by Description</button>
+        <button onClick={() => handleSort('category')} className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sort by Category</button>
+      </div>
+
+      <ExpenseTable className="w-full max-w-2xl" expenses={filteredAndSortedExpenses} />
     </div>
   );
 }
