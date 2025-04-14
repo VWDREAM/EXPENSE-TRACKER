@@ -23,6 +23,10 @@ function App() {
   const addExpense = (newExpense) => {
     setExpenses([...expenses, newExpense]);
   };
+  const handleDeleteExpense = (id) => {
+    setExpenses(expenses.filter(expense => expense.id !== id));
+  };
+
 
   const handleSort = (column) => {
     if (sortBy === column) {
@@ -71,7 +75,7 @@ function App() {
         <button onClick={() => handleSort('category')} className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sort by Category</button>
       </div>
 
-      <ExpenseTable className="w-full max-w-2xl" expenses={filteredAndSortedExpenses} />
+      <ExpenseTable className="w-full max-w-2xl" expenses={filteredAndSortedExpenses} onDeleteExpense={handleDeleteExpense} />
     </div>
   );
 }
